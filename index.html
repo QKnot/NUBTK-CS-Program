@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUBTK Computer Science Program</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #2c3e50;
+            background: #f8f9fa;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-section h1 {
+            font-size: 3em;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .hero-section .subtitle {
+            font-size: 1.3em;
+            font-weight: 300;
+            letter-spacing: 1px;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section {
+            background: white;
+            margin-bottom: 40px;
+            padding: 50px;
+            border-radius: 2px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #1a365d;
+        }
+
+        .section-title {
+            font-size: 2.2em;
+            color: #1a365d;
+            margin-bottom: 15px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: #c9a961;
+        }
+
+        .organizers-grid {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .organizer-card {
+            text-align: center;
+        }
+
+        .organizer-name {
+            font-size: 1.2em;
+            color: #2c3e50;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .organizer-title {
+            color: #7a8088;
+            font-size: 0.95em;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .semester-header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 1px solid #e2e8f0;
+            margin-bottom: 40px;
+        }
+
+        .semester-name {
+            font-size: 2.5em;
+            color: #1a365d;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .semester-duration {
+            color: #7a8088;
+            font-size: 1.1em;
+            letter-spacing: 1px;
+        }
+
+        .syllabus-box {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            padding: 35px;
+            margin: 40px 0;
+            text-align: center;
+            border-radius: 2px;
+        }
+
+        .syllabus-box h3 {
+            color: #1a365d;
+            font-size: 1.5em;
+            font-weight: 400;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .syllabus-box p {
+            color: #4a5568;
+            margin-bottom: 25px;
+            font-size: 1.05em;
+        }
+
+        .btn-download {
+            display: inline-block;
+            padding: 15px 45px;
+            background: #1a365d;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 1px;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+            border: 2px solid #1a365d;
+        }
+
+        .btn-download:hover {
+            background: white;
+            color: #1a365d;
+        }
+
+        .team-category {
+            margin-bottom: 50px;
+        }
+
+        .team-category h3 {
+            color: #2c5282;
+            font-size: 1.8em;
+            font-weight: 400;
+            margin-bottom: 35px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+        }
+
+        .member-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 35px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .member-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #c9a961;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .member-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .member-card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .member-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5em;
+            font-weight: 300;
+            letter-spacing: 2px;
+            border: 4px solid #e2e8f0;
+        }
+
+        .member-name {
+            font-size: 1.25em;
+            color: #2c3e50;
+            font-weight: 500;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .member-role {
+            color: #7a8088;
+            font-size: 0.95em;
+            font-style: italic;
+            letter-spacing: 0.5px;
+        }
+
+        .footer {
+            background: #1a365d;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .footer p {
+            margin: 8px 0;
+            opacity: 0.9;
+            letter-spacing: 0.5px;
+        }
+
+        .footer .copyright {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9em;
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #c9a961, transparent);
+            margin: 50px 0;
+        }
+
+        .program-description {
+            max-width: 900px;
+            margin: 30px auto 0;
+            text-align: justify;
+            line-height: 2;
+        }
+
+        .program-description p {
+            margin-bottom: 20px;
+            color: #4a5568;
+            font-size: 1.05em;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2em;
+            }
+
+            .section {
+                padding: 30px 20px;
+            }
+
+            .section-title {
+                font-size: 1.8em;
+            }
+
+            .semester-name {
+                font-size: 2em;
+            }
+
+            .organizers-grid {
+                gap: 30px;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-section">
+        <h1>Northern University of Business and Technology Khulna</h1>
+        <div class="subtitle">Computer Science and Engineering Academic Excellence Program</div>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h2 class="section-title">About the Program</h2>
+            <div class="program-description">
+                <p>The NUBTK CS Program is a non-profit initiative designed to help students in both academic and non-academic areas. It focuses on enhancing problem-solving skills, critical thinking, and understanding of future technologies. The program introduces students to various fields of computer science and guides them on how to begin developing their skills effectively.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Program Organizers</h2>
+            <div class="organizers-grid">
+                <div class="organizer-card">
+                    <div class="organizer-name">Rahul Kumar Ghosh</div>
+                    <div class="organizer-title">Program Coordinator</div>
+                </div>
+                <div class="organizer-card">
+                    <div class="organizer-name">Saiful Islam</div>
+                    <div class="organizer-title">Program Coordinator</div>
+                </div>
+                <div class="organizer-card">
+                    <div class="organizer-name">Sourav Mondal</div>
+                    <div class="organizer-title">Program Coordinator</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="semester-header">
+                <div class="semester-name">NUBTK Fall CS25</div>
+                <div class="semester-duration">Six-Month Academic or Non-Academic Support Program</div>
+            </div>
+
+            <div class="syllabus-box">
+                <h3>Course Syllabus</h3>
+                <p>Comprehensive program curriculum and learning objectives for the Fall 2025 semester</p>
+                <a href="./Intra-UniversityProgrammingContest2025JuniorsEditorial.pdf" class="btn-download" download>DOWNLOAD SYLLABUS</a></div>
+
+            <div class="divider"></div>
+
+            <div class="team-category">
+                <h3>Program Instructors</h3>
+                <div class="team-grid">
+                    <div class="member-card">
+                        <div class="member-photo">Mir</div>
+                        <div class="member-name">Mir Mashrafi Hossain Sahil</div>
+                        <div class="member-role">Program Instructor</div>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-photo">SR</div>
+                        <div class="member-name">SK. Tasnimur Rahman</div>
+                        <div class="member-role">Program Instructor</div>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-photo">SH</div>
+                        <div class="member-name">Sabbir Hossain</div>
+                        <div class="member-role">Program Instructor</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="team-category">
+                <h3>Program Assistant</h3>
+                <div class="team-grid">
+                    <div class="member-card">
+                        <div class="member-photo">DT</div>
+                        <div class="member-name">Devjyoti Tikader</div>
+                        <div class="member-role">Program Assistant</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Northern University of Business and Technology Khulna</p>
+        <p>Bangladesh</p>
+        <p>Computer Science and Engineering Support Initiative</p>
+        <div class="copyright">
+            <p>&copy; 2025 NUBTK. All Rights Reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scroll functionality
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add subtle fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section, .member-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
