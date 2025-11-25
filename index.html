@@ -12,33 +12,111 @@
         }
 
         body {
-            font-family: 'Georgia', 'Times New Roman', serif;
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.8;
             color: #2c3e50;
-            background: #f8f9fa;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
         }
 
         .hero-section {
-            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             color: white;
-            padding: 80px 20px;
+            padding: 100px 20px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>');
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            from { transform: translateY(0); }
+            to { transform: translateY(-100px); }
         }
 
         .hero-section h1 {
-            font-size: 3em;
-            font-weight: 300;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
+            font-size: 3.2em;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
         }
 
         .hero-section .subtitle {
-            font-size: 1.3em;
-            font-weight: 300;
-            letter-spacing: 1px;
+            font-size: 1.4em;
+            font-weight: 400;
+            letter-spacing: 0.5px;
             opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        .navigation {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .nav-link {
+            color: #667eea;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            z-index: -1;
+            border-radius: 50px;
+        }
+
+        .nav-link:hover::before {
+            transform: scaleX(1);
+        }
+
+        .nav-link:hover {
+            color: white;
+            transform: translateY(-2px);
         }
 
         .container {
@@ -51,20 +129,25 @@
             background: white;
             margin-bottom: 40px;
             padding: 50px;
-            border-radius: 2px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            border-left: 4px solid #1a365d;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
 
         .section-title {
-            font-size: 2.2em;
-            color: #1a365d;
+            font-size: 2.5em;
+            color: #667eea;
             margin-bottom: 15px;
-            font-weight: 400;
-            letter-spacing: 1px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
             text-align: center;
             position: relative;
-            padding-bottom: 15px;
+            padding-bottom: 20px;
         }
 
         .section-title::after {
@@ -73,56 +156,119 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 2px;
-            background: #c9a961;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .advisor-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            padding: 40px;
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border-radius: 15px;
+            flex-wrap: wrap;
+        }
+
+        .advisor-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3em;
+            font-weight: 600;
+            letter-spacing: 2px;
+            border: 6px solid white;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .advisor-info {
+            text-align: left;
+        }
+
+        .advisor-name {
+            font-size: 2em;
+            color: #2c3e50;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .advisor-title {
+            font-size: 1.3em;
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .advisor-institution {
+            font-size: 1.1em;
+            color: #7a8088;
+            font-style: italic;
         }
 
         .organizers-grid {
-            display: flex;
-            justify-content: center;
-            gap: 60px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
             margin-top: 40px;
-            flex-wrap: wrap;
         }
 
         .organizer-card {
             text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #f093fb15 0%, #f5576c15 100%);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .organizer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(240, 147, 251, 0.3);
         }
 
         .organizer-name {
-            font-size: 1.2em;
+            font-size: 1.3em;
             color: #2c3e50;
-            font-weight: 500;
-            letter-spacing: 0.5px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            margin-bottom: 8px;
         }
 
         .organizer-title {
-            color: #7a8088;
-            font-size: 0.95em;
-            margin-top: 5px;
-            font-style: italic;
+            color: #764ba2;
+            font-size: 1em;
+            font-weight: 500;
         }
 
         .semester-header {
             text-align: center;
             padding: 40px 0;
-            border-bottom: 1px solid #e2e8f0;
             margin-bottom: 40px;
         }
 
         .semester-name {
-            font-size: 2.5em;
-            color: #1a365d;
-            font-weight: 300;
-            letter-spacing: 2px;
+            font-size: 2.8em;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            letter-spacing: 1px;
             margin-bottom: 10px;
         }
 
         .semester-duration {
             color: #7a8088;
-            font-size: 1.1em;
-            letter-spacing: 1px;
+            font-size: 1.2em;
+            letter-spacing: 0.5px;
         }
 
         .registration-section {
@@ -133,63 +279,64 @@
 
         .btn-register {
             display: inline-block;
-            padding: 18px 50px;
-            background: #c9a961;
+            padding: 20px 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             text-decoration: none;
             letter-spacing: 1px;
-            font-size: 1.1em;
-            font-weight: 500;
+            font-size: 1.2em;
+            font-weight: 600;
             transition: all 0.3s ease;
-            border: 2px solid #c9a961;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
             margin-top: 20px;
         }
 
         .btn-register:hover {
-            background: white;
-            color: #c9a961;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(201, 169, 97, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
         }
 
         .syllabus-box {
-            background: #f7fafc;
-            border: 1px solid #e2e8f0;
-            padding: 35px;
+            background: linear-gradient(135deg, #84fab015 0%, #8fd3f415 100%);
+            border: 2px solid #84fab050;
+            padding: 40px;
             margin: 40px 0;
             text-align: center;
-            border-radius: 2px;
+            border-radius: 20px;
         }
 
         .syllabus-box h3 {
-            color: #1a365d;
-            font-size: 1.5em;
-            font-weight: 400;
+            color: #667eea;
+            font-size: 1.8em;
+            font-weight: 600;
             margin-bottom: 15px;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         .syllabus-box p {
             color: #4a5568;
             margin-bottom: 25px;
-            font-size: 1.05em;
+            font-size: 1.1em;
         }
 
         .btn-download {
             display: inline-block;
             padding: 15px 45px;
-            background: #1a365d;
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
             color: white;
             text-decoration: none;
             letter-spacing: 1px;
-            font-size: 0.95em;
+            font-size: 1em;
+            font-weight: 600;
             transition: all 0.3s ease;
-            border: 2px solid #1a365d;
+            border-radius: 50px;
+            box-shadow: 0 5px 20px rgba(132, 250, 176, 0.4);
         }
 
         .btn-download:hover {
-            background: white;
-            color: #1a365d;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(132, 250, 176, 0.5);
         }
 
         .team-category {
@@ -197,12 +344,12 @@
         }
 
         .team-category h3 {
-            color: #2c5282;
-            font-size: 1.8em;
-            font-weight: 400;
+            color: #667eea;
+            font-size: 2em;
+            font-weight: 600;
             margin-bottom: 35px;
             text-align: center;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         .team-grid {
@@ -212,12 +359,14 @@
         }
 
         .member-card {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border: 2px solid #e2e8f0;
             padding: 35px;
             text-align: center;
             transition: all 0.3s ease;
+            border-radius: 15px;
             position: relative;
+            overflow: hidden;
         }
 
         .member-card::before {
@@ -226,8 +375,8 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 3px;
-            background: #c9a961;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
             transform: scaleX(0);
             transition: transform 0.3s ease;
         }
@@ -237,8 +386,8 @@
         }
 
         .member-card:hover {
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.2);
+            transform: translateY(-8px);
         }
 
         .member-photo {
@@ -246,57 +395,69 @@
             height: 160px;
             border-radius: 50%;
             margin: 0 auto 25px;
-            background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-size: 2.5em;
-            font-weight: 300;
+            font-weight: 600;
             letter-spacing: 2px;
-            border: 4px solid #e2e8f0;
+            border: 5px solid #e2e8f0;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
         }
 
         .member-name {
-            font-size: 1.25em;
+            font-size: 1.3em;
             color: #2c3e50;
-            font-weight: 500;
+            font-weight: 600;
             margin-bottom: 8px;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
         }
 
         .member-role {
-            color: #7a8088;
-            font-size: 0.95em;
-            font-style: italic;
-            letter-spacing: 0.5px;
+            color: #764ba2;
+            font-size: 1em;
+            font-weight: 500;
         }
 
         .footer {
-            background: #1a365d;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 40px 20px;
+            padding: 50px 20px;
             text-align: center;
             margin-top: 60px;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
         }
 
         .footer p {
             margin: 8px 0;
-            opacity: 0.9;
+            opacity: 0.95;
             letter-spacing: 0.5px;
         }
 
         .footer .copyright {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            font-size: 0.9em;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 0.95em;
+        }
+
+        .footer a {
+            color: #84fab0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: white;
         }
 
         .divider {
-            height: 1px;
-            background: linear-gradient(to right, transparent, #c9a961, transparent);
+            height: 2px;
+            background: linear-gradient(to right, transparent, #667eea, #764ba2, transparent);
             margin: 50px 0;
+            border-radius: 1px;
         }
 
         .program-description {
@@ -309,12 +470,12 @@
         .program-description p {
             margin-bottom: 20px;
             color: #4a5568;
-            font-size: 1.05em;
+            font-size: 1.1em;
         }
 
         @media (max-width: 768px) {
             .hero-section h1 {
-                font-size: 2em;
+                font-size: 2.2em;
             }
 
             .section {
@@ -322,15 +483,24 @@
             }
 
             .section-title {
-                font-size: 1.8em;
-            }
-
-            .semester-name {
                 font-size: 2em;
             }
 
+            .semester-name {
+                font-size: 2.2em;
+            }
+
+            .advisor-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .advisor-info {
+                text-align: center;
+            }
+
             .organizers-grid {
-                gap: 30px;
+                grid-template-columns: 1fr;
             }
 
             .team-grid {
@@ -345,15 +515,38 @@
         <div class="subtitle">Computer Science and Engineering Academic Excellence Program</div>
     </div>
 
+    <nav class="navigation">
+        <div class="nav-container">
+            <a href="#about" class="nav-link">About</a>
+            <a href="#advisor" class="nav-link">Teacher Advisor</a>
+            <a href="#organizers" class="nav-link">Organizers</a>
+            <a href="#program" class="nav-link">Program Details</a>
+            <a href="#instructors" class="nav-link">Instructors</a>
+            <a href="#assistant" class="nav-link">Assistant</a>
+        </div>
+    </nav>
+
     <div class="container">
-        <div class="section">
+        <div class="section" id="about">
             <h2 class="section-title">About the Program</h2>
             <div class="program-description">
                 <p>The NUBTK CS Program is a non-profit initiative designed to help students in both academic and non-academic areas. It focuses on enhancing problem-solving skills, critical thinking, and understanding of future technologies. The program introduces students to various fields of computer science and guides them on how to begin developing their skills effectively.</p>
             </div>
         </div>
 
-        <div class="section">
+        <div class="section" id="advisor">
+            <h2 class="section-title">Teacher Advisor</h2>
+            <div class="advisor-card">
+                <div class="advisor-photo">VK</div>
+                <div class="advisor-info">
+                    <div class="advisor-name">Vashkar Kar</div>
+                    <div class="advisor-title">Lecturer of CSE</div>
+                    <div class="advisor-institution">Northern University of Business and Technology Khulna</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="organizers">
             <h2 class="section-title">Program Organizers</h2>
             <div class="organizers-grid">
                 <div class="organizer-card">
@@ -368,10 +561,14 @@
                     <div class="organizer-name">Sourav Mondal</div>
                     <div class="organizer-title">Program Coordinator</div>
                 </div>
+                <div class="organizer-card">
+                    <div class="organizer-name">Ayon Adhikary Arko</div>
+                    <div class="organizer-title">Program Coordinator</div>
+                </div>
             </div>
         </div>
 
-        <div class="section">
+        <div class="section" id="program">
             <div class="semester-header">
                 <div class="semester-name">NUBTK Fall CS25</div>
                 <div class="semester-duration">Six-Month Academic or Non-Academic Support Program</div>
@@ -389,7 +586,7 @@
 
             <div class="divider"></div>
 
-            <div class="team-category">
+            <div class="team-category" id="instructors">
                 <h3>Program Instructors</h3>
                 <div class="team-grid">
                     <div class="member-card">
@@ -399,7 +596,7 @@
                     </div>
                     <div class="member-card">
                         <div class="member-photo">SR</div>
-                        <div class="member-name">SK. Tasnimur Rahman</div>
+                        <div class="member-name">SK. Tasnim Ur Rahman</div>
                         <div class="member-role">Program Instructor</div>
                     </div>
                     <div class="member-card">
@@ -412,7 +609,7 @@
 
             <div class="divider"></div>
 
-            <div class="team-category">
+            <div class="team-category" id="assistant">
                 <h3>Program Assistant</h3>
                 <div class="team-grid">
                     <div class="member-card">
@@ -429,9 +626,9 @@
         <p>Northern University of Business and Technology Khulna</p>
         <p>Bangladesh</p>
         <p>Computer Science and Engineering Support Initiative</p>
-        <p style="margin-top: 20px;">Contact: <a href="mailto:qknot0.3@gmail.com" style="color: #c9a961; text-decoration: none;">qknot0.3@gmail.com</a></p>
+        <p style="margin-top: 20px;">Contact: <a href="mailto:qknot0.3@gmail.com">qknot0.3@gmail.com</a></p>
         <div class="copyright">
-            <p>&copy; 2025 NUBTK. All Rights Reserved.</p>
+            <p>&copy; CS Program NUBTK. All Rights Reserved.</p>
         </div>
     </div>
 
